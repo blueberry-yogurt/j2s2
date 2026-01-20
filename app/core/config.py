@@ -1,10 +1,13 @@
-from pydantic import BaseModel
-import os
+from pydantic_settings import BaseSettings
 
+class Settings(BaseSettings):
+    DB_HOST: str = "127.0.0.1"
+    DB_PORT: int = 3306
+    DB_USER: str = "root"
+    DB_PASSWORD: str = ""
+    DB_NAME: str = "j2s2"
 
-class Settings(BaseModel):
-    APP_NAME: str = os.getenv("APP_NAME", "J2S2 Diary API")
-    API_V1_PREFIX: str = os.getenv("API_V1_PREFIX", "/api/v1")
-
+    class Config:
+        env_file = ".env"
 
 settings = Settings()

@@ -1,6 +1,7 @@
-def main():
-    print("Hello from j2s2-base!")
+@app.on_event("startup")
+async def startup():
+    await init_db()
 
-
-if __name__ == "__main__":
-    main()
+@app.on_event("shutdown")
+async def shutdown():
+    await close_db()
