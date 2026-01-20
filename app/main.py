@@ -7,6 +7,7 @@ app = FastAPI(
 )
 app.include_router(health_router, prefix=settings.API_V1_PREFIX)
 
+
 @app.get("/")
 def root():
     return {"message": "J2S2"}
