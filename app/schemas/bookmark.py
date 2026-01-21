@@ -6,7 +6,7 @@ class BookmarkCreate(BaseModel):
 
 class BookmarkResponse(BaseModel):
     id: int
-    quote_id: int
+    #quote_id: int
     created_at: datetime
 
     class Config:
