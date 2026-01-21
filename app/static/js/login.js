@@ -10,20 +10,27 @@ $(".loginBtn").addEventListener("click", async () => {
   }
 
   const payload = {
-    user_id: $(".userId").value,
+    username: $(".userName").value,
     password: $(".userPw").value,
   };
 
   try {
-    // 👉 FastAPI 로그인 API 연결 예정
-    // const res = await fetch("/api/v1/auth/login", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(payload),
-    // });
+    const res = await fetch("/api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
 
-    // 임시 성공 처리
-    console.log(payload);
+    if (!res.ok) {
+      throw new Error("Login failed");
+    }
+
+    const data = await res.json();
+
+    //JWT 토큰 저장
+    localStorage.setItem("access_token", data.access_token);
     alert("로그인 성공!");
     window.location.href = "main.html";
 

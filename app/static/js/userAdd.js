@@ -45,7 +45,7 @@ $(".userJoin").addEventListener("click", async () => {
   };
 
   try {
-    const res = await fetch("/api/v1/auth/signup", {
+    const res = await fetch("/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ $(".userJoin").addEventListener("click", async () => {
     }
 
     alert(data.message);
-    window.location.href = "/login";
+    window.location.href = "/login.html";
 
   } catch (err) {
     message.textContent = err.message;
