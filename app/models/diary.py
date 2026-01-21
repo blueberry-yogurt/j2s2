@@ -1,4 +1,4 @@
-from tortoise import field, Models
+from tortoise import fields, models
 
 class Diary(models.Model):
     id = fields.IntField(pk=True)
@@ -7,6 +7,7 @@ class Diary(models.Model):
     title = fields.CharField(max_length=255)
     content = fields.TextField()
     created_at = fields.DatetimeField(auto_now_add=True)
+    # ERD의 diaries -> users 관계 (N:1)
     updated_at = fields.DatetimeField(auto_now=True)
 
     class Meta:
