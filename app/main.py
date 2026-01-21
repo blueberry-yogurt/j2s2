@@ -34,6 +34,8 @@ def create_app() -> FastAPI:
 
     app.include_router(saying_router, prefix=api_prefix)
 
+    app.include_router(saying_router, prefix=api_prefix)
+
     app.mount("/static", StaticFiles(directory="static"), name="static")
 
     # startup / shutdown
