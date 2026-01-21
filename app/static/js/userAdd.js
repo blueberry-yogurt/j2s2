@@ -36,8 +36,10 @@ $(".userJoin").addEventListener("click", async () => {
   }
 
   const payload = {
+    username: $(".userName").value,
     password: pw.value,
-    name: $(".userName").value
+    email: $(".userEmail").value,
+
   };
 
   try {
@@ -55,10 +57,10 @@ $(".userJoin").addEventListener("click", async () => {
       throw new Error(data.detail || "회원가입 실패");
     }
 
-    alert(data.message);
-    window.location.href = "/login.html";
+    //alert(data.message);
+    window.location.href = "/login";
 
   } catch (err) {
-    message.textContent = err.message;
+    //message.textContent = err.message;
   }
 });
