@@ -8,13 +8,14 @@ from app.core.jwt import create_access_token
 
 templates = Jinja2Templates(directory="templates")
 router = APIRouter(tags=["auth"])
+"""
 @router.get("")
 async def root(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
+"""
 
 @router.post("/auth/login", response_model=TokenResponse)
 async def login(payload: LoginRequest) -> TokenResponse:
-    print(hash_password(payload.password))
     user = await User.get_or_none(username=payload.username)
     if not user or not verify_password(payload.password, user.password_hash):
         raise HTTPException(
