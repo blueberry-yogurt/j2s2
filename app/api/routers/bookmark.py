@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List
 from app.core.deps import get_current_user
 from app.models.user import User
+
 from app.repositories.bookmark_repo import BookmarkRepository
 from app.schemas.bookmark import BookmarkCreate, BookmarkResponse
 
@@ -18,8 +19,8 @@ async def toggle_quote_bookmark(
     """
     # BookmarkRepository에 정의한 toggle 로직 호출
     result = await BookmarkRepository.toggle_bookmark(
-        user = current_user,
-        quote_id = bookmark_in.quote_id
+        user = current_user
+        #quote_id = bookmark_in.quote_id
     )
     return result
 
