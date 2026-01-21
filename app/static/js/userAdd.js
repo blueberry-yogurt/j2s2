@@ -36,10 +36,12 @@ $(".userJoin").addEventListener("click", async () => {
   }
 
   const payload = {
-    username: $(".userName").value,
+    user_id: $(".userId").value,
     password: pw.value,
+    name: $(".userName").value,
+    phone: $(".userPhone").value,
+    gender: document.querySelector("input[name='gender']:checked").value,
     email: $(".userEmail").value,
-
   };
 
   try {
@@ -57,10 +59,10 @@ $(".userJoin").addEventListener("click", async () => {
       throw new Error(data.detail || "회원가입 실패");
     }
 
-    //alert(data.message);
-    window.location.href = "/login";
+    alert(data.message);
+    window.location.href = "/login.html";
 
   } catch (err) {
-    //message.textContent = err.message;
+    message.textContent = err.message;
   }
 });
