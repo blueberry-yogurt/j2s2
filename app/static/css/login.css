@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Noto Sans KR", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 380px;
+  background: #fff;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px #e5e7eb;
+}
+
+h2 {
+  margin: 0;
+}
+
+.sub {
+  margin: 6px 0 18px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.field {
+  margin-top: 16px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background-clip: padding-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.loginBtn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #111827;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #dc2626;
+  min-height: 18px;
+}
+
+.footer {
+  margin-top: 18px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.footer a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 600;
+}

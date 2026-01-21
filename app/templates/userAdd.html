@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <link rel="stylesheet" href="/static/css/userAdd.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <header class="header">
+        <h2>회원가입</h2>
+      </header>
+
+      <form class="userJoinForm">
+        <div class="field">
+          <label>이름</label>
+          <input type="text" class="userName" placeholder="이름" required />
+        </div>
+        <div class="field">
+          <label>비밀번호</label>
+          <input type="password" class="userPw" placeholder="비밀번호" required />
+          <small>* 영문, 숫자, 특수문자 포함 8~30자</small>
+        </div>
+        <div class="field">
+          <label>비밀번호 확인</label>
+          <input type="password" class="userPw2" placeholder="비밀번호 확인" required />
+        </div>
+        <!--
+        <div class="field">
+          <label>이메일</label>
+          <input type="email" class="userEmail" placeholder="이메일" required />
+        </div>
+        <div class="field">
+          <label>전화번호</label>
+          <input
+            type="text"
+            class="userPhone"
+            placeholder="010-1234-5678"
+            pattern="010-\d{4}-\d{4}$"
+            required
+          />
+        </div>-->
+        <p class="checkMessage"></p>
+
+        <button type="button" class="userJoin">가입하기</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/static/css/userAdd.js"></script>
+</body>
+</html>
