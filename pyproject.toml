@@ -38,3 +38,7 @@ prod = [
 tortoise_orm = "app.db.database.TORTOISE_ORM"
 location = "./migrations"
 src_folder = "./."
+
+[tool.ruff]
+target-version="py314"
+
