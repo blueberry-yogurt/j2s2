@@ -36,12 +36,8 @@ $(".userJoin").addEventListener("click", async () => {
   }
 
   const payload = {
-    user_id: $(".userId").value,
     password: pw.value,
-    name: $(".userName").value,
-    phone: $(".userPhone").value,
-    gender: document.querySelector("input[name='gender']:checked").value,
-    email: $(".userEmail").value,
+    name: $(".userName").value
   };
 
   try {

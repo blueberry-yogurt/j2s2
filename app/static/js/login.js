@@ -15,7 +15,7 @@ $(".loginBtn").addEventListener("click", async () => {
   };
 
   try {
-    const res = await fetch("/api/v1/login", {
+    const res = await fetch("/api/v1/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ $(".loginBtn").addEventListener("click", async () => {
     if (!res.ok) {
       throw new Error("Login failed");
     }
-
+    console.log("payload:", payload);
     const data = await res.json();
 
     //JWT 토큰 저장
