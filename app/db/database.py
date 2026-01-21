@@ -12,6 +12,7 @@ TORTOISE_ORM = {
                 "app.models.diary",  #  <- 2026.01.21 심상보 추가
                 "app.models.bookmark",  #  <- 2026.01.21 심상보 추가
                 "aerich.models",
+                "app.models.saying"
             ],
             "default_connection": "default",
         }
