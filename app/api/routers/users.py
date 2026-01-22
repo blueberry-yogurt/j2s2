@@ -24,7 +24,6 @@ async def signup(payload: UserCreate) -> UserOut:
         )
     user = await User.create(
         username=payload.username,
-        password_hash=hash_password(payload.password),
-        email=payload.email,
+        password_hash=hash_password(payload.password)
     )
-    return UserOut(username=user.username, password=user.password_hash, email=user.email)
+    return UserOut(username=user.username, password=user.password_hash)
