@@ -7,9 +7,12 @@ from app.models.user import User
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 
+
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
     try:
-        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
+        payload = jwt.decode(
+            token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM]
+        )
         sub = payload.get("sub")
         if not sub:
             raise HTTPException(status_code=401, detail="Invalid token")
@@ -20,4 +23,3 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
     return user
-

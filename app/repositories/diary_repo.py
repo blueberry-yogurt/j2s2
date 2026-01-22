@@ -2,6 +2,7 @@ from typing import List, Optional
 from app.models.diary import Diary
 from app.models.user import User
 
+
 class DiaryRepository:
     @staticmethod
     async def create(user: User, title: str, content: str) -> Diary:

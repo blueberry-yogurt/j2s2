@@ -8,6 +8,7 @@ class UserCreate(BaseModel):
 
 class UserOut(BaseModel):
     username: str
-    password: str #= Field(min_length=8, max_length=64)
+    password: str  # = Field(min_length=8, max_length=64)
+
     class Config:
         from_attributes = True

@@ -14,6 +14,7 @@ async def root(request: Request):
     return templates.TemplateResponse("userAdd.html", {"request": request})
 """
 
+
 @router.post("", response_model=UserOut, status_code=status.HTTP_201_CREATED)
 async def signup(payload: UserCreate) -> UserOut:
     exists = await User.filter(username=payload.username).exists()
@@ -23,7 +24,6 @@ async def signup(payload: UserCreate) -> UserOut:
             detail="name already exists",
         )
     user = await User.create(
-        username=payload.username,
-        password_hash=hash_password(payload.password)
+        username=payload.username, password_hash=hash_password(payload.password)
     )
     return UserOut(username=user.username, password=user.password_hash)
