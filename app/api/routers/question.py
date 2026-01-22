@@ -13,7 +13,7 @@ async def get_random_reflection_question(current_user: User = Depends(get_curren
     question = await QuestionRepository.get_random_question()
 
     if not question:
-        raise HTTPException(status_code=404, detai="등록된 질문이 없습니다.")
+        raise HTTPException(status_code=404, detail="등록된 질문이 없습니다.")
     return {
         "id": question.id,
         "question_text": question.question_text

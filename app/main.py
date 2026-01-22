@@ -53,7 +53,20 @@ def create_app() -> FastAPI:
 
     @app.on_event("startup")
     async def on_startup() -> None:
+        # 1. DB 초기화 (반드시 최상단에 위치)
         await init_db()
+
+        # 2. 명언 스크래핑 실행
+        # 로컬에서 이미 import 되어 있는지 확인 (상단에 from app.services.scraper import scrape_quotes 필요)
+        from app.services.scraper import scrape_quotes
+
+        print("🚀 서버 시작: 명언 데이터 동기화 작업을 시작합니다.")
+        try:
+            await scrape_quotes()
+            print("✅ 서버 시작: 명언 데이터 동기화 완료!")
+        except Exception as e:
+            # 스크래핑 에러가 나더라도 서버 자체가 죽지 않도록 예외 처리
+            print(f"❌ 서버 시작 중 스크래핑 실패: {e}")
 
     @app.on_event("shutdown")
     async def on_shutdown() -> None:
