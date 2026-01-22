@@ -7,4 +7,4 @@ router = APIRouter(tags=["me"])
 
 @router.get("/me", response_model=UserOut)
 async def me(user: User = Depends(get_current_user)) -> UserOut:
-    return UserOut(id=user.id, email=user.email, created_at=user.created_at)
+    return UserOut(username=user.username, password=user.password_hash)
