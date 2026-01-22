@@ -8,10 +8,10 @@ from app.schemas.bookmark import BookmarkCreate, BookmarkResponse
 
 router = APIRouter(prefix="/bookmark", tags=["bookmark"])
 
+
 @router.post("/", response_model=dict, status_code=status.HTTP_201_CREATED)
 async def toggle_quote_bookmark(
-        bookmark_in: BookmarkCreate,
-        current_user: User = Depends(get_current_user)
+    bookmark_in: BookmarkCreate, current_user: User = Depends(get_current_user)
 ):
     """
     명언 북마크 토글:
@@ -19,15 +19,14 @@ async def toggle_quote_bookmark(
     """
     # BookmarkRepository에 정의한 toggle 로직 호출
     result = await BookmarkRepository.toggle_bookmark(
-        user = current_user
-        #quote_id = bookmark_in.quote_id
+        user=current_user
+        # quote_id = bookmark_in.quote_id
     )
     return result
 
+
 @router.get("/", response_model=List[BookmarkResponse])
-async def read_my_bookmarks(
-        current_user: User = Depends(get_current_user)
-):
+async def read_my_bookmarks(current_user: User = Depends(get_current_user)):
     """
     현재 로그인한 사용자가 북마크한 모든 명언 목록을 가져옵니다.
     """

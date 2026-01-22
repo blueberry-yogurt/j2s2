@@ -14,15 +14,17 @@ TORTOISE_ORM = {
                 "app.models.diary_bookmark",
                 "app.models.question",  #  <- 2026.01.21 심상보 추가
                 "aerich.models",
-                "app.models.quote"
+                "app.models.quote",
             ],
             "default_connection": "default",
         }
     },
 }
 
+
 async def init_db() -> None:
     await Tortoise.init(config=TORTOISE_ORM)
+
 
 async def close_db() -> None:
     await Tortoise.close_connections()

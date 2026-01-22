@@ -7,15 +7,15 @@ from app.schemas.diary_bookmark import DiaryBookmarkCreate, DiaryBookmarkRespons
 
 router = APIRouter(prefix="/diary", tags=["diary bookmark"])
 
+
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def toggle_diary_bookmark(
-        bookmark_id: DiaryBookmarkCreate,
-        current_user: User = Depends(get_current_user)
+    bookmark_id: DiaryBookmarkCreate, current_user: User = Depends(get_current_user)
 ):
     return await DiaryBookmarkRepository.toggle_bookmark(
-        user=current_user,
-        diary_id=bookmark_id.diary_id
+        user=current_user, diary_id=bookmark_id.diary_id
     )
+
 
 @router.get("/", response_model=List[DiaryBookmarkResponse])
 async def get_my_diary_bookmarks(current_user: User = Depends(get_current_user)):

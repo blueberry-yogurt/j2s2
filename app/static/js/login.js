@@ -31,7 +31,7 @@ $(".loginBtn").addEventListener("click", async () => {
 
     //JWT 토큰 저장
     localStorage.setItem("access_token", data.access_token);
-    alert("로그인 성공!");
+    //alert("로그인 성공!");
     window.location.href = "main.html";
 
   } catch (err) {

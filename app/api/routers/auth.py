@@ -28,6 +28,7 @@ async def login(payload: LoginRequest) -> TokenResponse:
     return TokenResponse(access_token=token)
 """
 
+
 @router.post("/auth/login", response_model=TokenResponse)
 async def login(form_data: OAuth2PasswordRequestForm = Depends()) -> TokenResponse:
     user = await User.get_or_none(username=form_data.username)
