@@ -46,18 +46,6 @@ def create_app() -> FastAPI:
     async def on_startup() -> None:
         await init_db()
 
-        await run_initial_tasks()
-
-        async def run_initial_tasks():
-            """서버 시작 시 필요한 작업들을 모아두는 곳"""
-            print("서버 시작: 데이터 동기화 작업 시작...")
-            try:
-                await scrape_quotes()
-                # 다른 팀원이 추가할 작업이 있다면 여기에 한 줄만 추가하면 됨
-                print("서버 시작: 데이터 동기화 완료")
-            except Exception as e:
-                print(f"초기 작업 실패: {e}")
-
     @app.on_event("shutdown")
     async def on_shutdown() -> None:
         await close_db()
