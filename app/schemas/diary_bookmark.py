@@ -11,4 +11,4 @@ class DiaryBookmarkResponse(BaseModel):
     created_at: datetime
 
     class Config:
-        from_attibutes = True
+        from_attributes = True
