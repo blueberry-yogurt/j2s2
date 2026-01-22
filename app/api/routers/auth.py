@@ -36,7 +36,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()) -> TokenRespon
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid credentials",
         )
-    print("ff")
     token = create_access_token(subject=user.username)
 
     return TokenResponse(access_token=token)
