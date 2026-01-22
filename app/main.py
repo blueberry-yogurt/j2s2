@@ -10,6 +10,7 @@ from app.api.routers.diary import router as diary_router # <- 2026.01.21 심상�
 from app.api.routers.quote import router as quote_router
 from app.api.routers.bookmark import router as bookmark_router  # <- 2026.01.21 심상보 추가
 from app.api.routers.question import router as question_router # <- 2026.01.21 심상보 추가
+from app.api.routers.diary_bookmark import router as diary_bookmark
 
 from app.core.config import settings
 from app.db.database import init_db, close_db
@@ -32,6 +33,9 @@ def create_app() -> FastAPI:
     app.include_router(diary_router, prefix=api_prefix)  # <- 2026.01.21 심상보 추가
     app.include_router(bookmark_router, prefix=api_prefix)  # <- 2026.01.21 심상보 추가
     app.include_router(question_router, prefix=api_prefix) # <- 2026.01.21 심상보 추가
+    app.include_router(diary_bookmark, prefix=api_prefix)
+
+    app.include_router(quote_router, prefix=api_prefix)
 
     app.include_router(quote_router, prefix=api_prefix)
 
