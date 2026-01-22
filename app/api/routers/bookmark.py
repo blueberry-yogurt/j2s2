@@ -31,5 +31,6 @@ async def read_my_bookmarks(
     """
     현재 로그인한 사용자가 북마크한 모든 명언 목록을 가져옵니다.
     """
+    print("Fff")
     bookmarks = await BookmarkRepository.get_user_bookmarks(current_user.id)
     return bookmarks
