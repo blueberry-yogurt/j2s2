@@ -12,6 +12,8 @@ from app.api.routers.bookmark import router as bookmark_router  # <- 2026.01.21 
 from app.api.routers.question import router as question_router # <- 2026.01.21 심상보 추가
 from app.api.routers.diary_bookmark import router as diary_bookmark
 
+
+from app.services.scraper import scrape_quotes
 from app.core.config import settings
 from app.db.database import init_db, close_db
 
@@ -34,14 +36,8 @@ def create_app() -> FastAPI:
     app.include_router(bookmark_router, prefix=api_prefix)  # <- 2026.01.21 심상보 추가
     app.include_router(question_router, prefix=api_prefix) # <- 2026.01.21 심상보 추가
     app.include_router(diary_bookmark, prefix=api_prefix)
-
     app.include_router(quote_router, prefix=api_prefix)
 
-    app.include_router(quote_router, prefix=api_prefix)
-
-    app.include_router(saying_router, prefix=api_prefix)
-
-    app.include_router(quote_router, prefix=api_prefix)
 
     app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -49,6 +45,13 @@ def create_app() -> FastAPI:
     @app.on_event("startup")
     async def on_startup() -> None:
         await init_db()
+
+        print("서버 시작: 명언 데이터 동기화 중입니다.")
+        try:
+            await scrape_quotes()
+            print("서버 시작 : 명언 데이터 동기화 완료")
+        except Exception as e:
+            print(f"서버 시작 중  스크래핑 실패!: {e}")
 
     @app.on_event("shutdown")
     async def on_shutdown() -> None:

@@ -5,3 +5,6 @@ class Quote(models.Model):
     id = fields.IntField(pk=True)
     title = fields.CharField(max_length=200)
     content = fields.TextField()
+
+    class Meta:
+        table = "quotes"
