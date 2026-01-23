@@ -8,7 +8,16 @@ class BookmarkCreate(BaseModel):
 
 class BookmarkResponse(BaseModel):
     id: int
-    # quote_id: int
+    quote_id: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+class BookmarkResponses(BaseModel):
+    id: int
+    quote_author: str
+    quote_content : str
     created_at: datetime
 
     class Config:

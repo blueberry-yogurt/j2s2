@@ -31,7 +31,7 @@ async def get_random_quote():
     quote = await Quote.all().offset(count-1).first()
 
     return {
-        #"id": quote.id,
+        "id": quote.id,
         "content": quote.content,
         "author": quote.author
     }

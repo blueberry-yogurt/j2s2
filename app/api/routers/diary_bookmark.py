@@ -3,7 +3,8 @@ from typing import List
 from app.core.deps import get_current_user
 from app.models.user import User
 from app.repositories.diary_bookmark import DiaryBookmarkRepository
-from app.schemas.diary_bookmark import DiaryBookmarkCreate, DiaryBookmarkResponse
+from app.schemas.diary_bookmark import DiaryBookmarkCreate, DiaryBookmarkResponses
+from app.models.diary import Diary
 
 router = APIRouter(prefix="/diary", tags=["diary bookmark"])
 
@@ -12,11 +13,13 @@ router = APIRouter(prefix="/diary", tags=["diary bookmark"])
 async def toggle_diary_bookmark(
     bookmark_id: DiaryBookmarkCreate, current_user: User = Depends(get_current_user)
 ):
-    return await DiaryBookmarkRepository.toggle_bookmark(
+    await DiaryBookmarkRepository.toggle_bookmark(
         user=current_user, diary_id=bookmark_id.diary_id
     )
+    diary = await Diary.get_or_none(id = bookmark_id.diary_id)
+    return {"status" : diary.content}
 
 
-@router.get("/", response_model=List[DiaryBookmarkResponse])
+@router.get("/", response_model=List[DiaryBookmarkResponses])
 async def get_my_diary_bookmarks(current_user: User = Depends(get_current_user)):
     return await DiaryBookmarkRepository.get_user_bookmarks(current_user.id)

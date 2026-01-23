@@ -18,7 +18,6 @@ router = APIRouter()
 async def create_diary(
     diary_in: DiaryCreate, current_user: User = Depends(get_current_user)
 ):
-    print("dd")
     return await DiaryRepository.create(current_user, **diary_in.dict())
 
 
