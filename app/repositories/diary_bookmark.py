@@ -1,5 +1,3 @@
-import blackd
-
 from app.models.diary_bookmark import DiaryBookmark
 
 
